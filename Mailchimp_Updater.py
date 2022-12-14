@@ -1,4 +1,4 @@
-# Export current patients from WriteUpp and Import into Mailchimp replacing current audience
+ # Export current patients from WriteUpp and Import into Mailchimp replacing current audience
 # V1.0mac 14/4/22
 
 import csv
@@ -20,7 +20,7 @@ from selenium.common.exceptions import TimeoutException
 
 
 version_no = "v1.0mac 14/12/2022"
-wd = 'C:\\Billing\\Mailchimp'
+wd = '/Users/justinbaron/Documents/Billing/Mailchimp'
 downloadDirectory = wd
 config_file = 'mailchimp.ini'
 
@@ -175,7 +175,7 @@ def upload_contacts():
 
     # The following two lines work but leave an open dialoge box
     file_input = driver.switch_to.active_element
-    file_input.send_keys('C:\Billing\Mailchimp\import_to_mailchimp.csv')
+    file_input.send_keys(wd + '/' + mc_import_file)
     time.sleep(4)
     pymsgbox.alert('Click Cancel  then click OK') # get rid of windows box
     driver.find_element_by_xpath('/html/body/div[3]/div/main/div/div/div/div/main/div/form/div/button').click()
@@ -213,12 +213,12 @@ driver.set_window_size(1055,1300)
 driver.implicitly_wait(3)
 
 # Code starts here
-loginWriteupp()
-download_opencases()
-create_mailchimp_file()
+#loginWriteupp()
+#download_opencases()
+#create_mailchimp_file()
 print('Export done')
 login_mailchimp()
-archive_contacts()
+#archive_contacts()
 upload_contacts()
 pymsgbox.alert('All done - press OK to close the browser')
 driver.quit()
