@@ -1,5 +1,5 @@
 # Export current patients from WriteUpp and Import into Mailchimp replacing current audience
-# V1.0win 14/4/22
+# V1.0mac 14/4/22
 
 import csv
 import os
@@ -19,7 +19,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 
 
-version_no = "v1.0win 13/12/2022"
+version_no = "v1.0mac 14/12/2022"
 wd = 'C:\\Billing\\Mailchimp'
 downloadDirectory = wd
 config_file = 'mailchimp.ini'
