@@ -1,5 +1,5 @@
  # Export current patients from WriteUpp and Import into Mailchimp replacing current audience
-# V1.0mac 14/4/22 AI
+# V1.1mac 15/12/22 AI
 
 import csv
 import os
@@ -19,7 +19,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 
 
-version_no = "v1.0mac 14/12/2022"
+version_no = "v1.0mac AI 15/12/2022"
 wd = '/Users/andrewiles/Library/CloudStorage/OneDrive-SharedLibraries-ExpertCourtReportsLtd/Private Treatment - Documents/General/Private treatment/Operations/Billing/Prescriptions'
 downloadDirectory = wd
 config_file = 'mailchimp.ini'
@@ -43,7 +43,7 @@ mc_import_file = config.get('mailchimp', 'import_fn')
 mc_audience_URL = config.get('mailchimp', 'audience_URL')
 
 today_date = datetime.now().strftime('%d/%m/%Y')
-full_date = datetime.now().strftime('%d %b %Y')
+full_date = datetime.now().strftime('%d %B %Y')
 past_date1 = datetime.now() - timedelta(days = wu_days)
 from_date = past_date1.strftime('%d/%m/%Y')
 
@@ -159,6 +159,7 @@ def upload_contacts():
     time.sleep(1)
     tag_input = driver.find_element_by_xpath('/html/body/div[3]/div/main/div/div/div/div/main/div/form/div/div/div[1]/div[3]/input')
     tag_input.send_keys(full_date)
+    tag_input.send_keys(Keys.RETURN)
     time.sleep(1)
     continune_to_match = driver.find_element_by_xpath('/html/body/div[3]/div/main/div/div/div/div/main/div/form/div/button')
     continune_to_match.click()
