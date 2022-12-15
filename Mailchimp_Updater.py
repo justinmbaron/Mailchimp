@@ -1,5 +1,5 @@
 # Export current patients from WriteUpp and Import into Mailchimp replacing current audience
-# V1.0win 14/4/22
+# V1.1win 15/12/22
 
 import csv
 import os
@@ -122,31 +122,6 @@ def login_mailchimp():
 
 def archive_contacts():
     driver.get('https://us3.admin.mailchimp.com/lists/members/archive-all?id=629937')
-    # time.sleep(2)
-    # try:
-    #     # mangage_audience = driver.find_element_by_xpath('/html/body/div[3]/div/main/div/section[1]/div/div[2]/div[2]/div/button')
-    #     mangage_audience = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[3]/div/main/div/section[1]/div/div[2]/div[2]/div/button')))
-    #     time.sleep(2)
-    #     mangage_audience.click()
-    #     driver.find_element_by_partial_link_text('Manage contacts').click()
-    #     time.sleep(4)
-    # except TimeoutException:
-    #     pymsgbox.alert('Timeout - contact Justin')
-    #     time.sleep(1)
-    # # Select Frame
-    # driver.switch_to.frame(driver.find_element_by_id('fallback'))
-    # time.sleep(1)
-    # try:
-    #     archive_link = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.PARTIAL_LINK_TEXT, 'Archive all contacts')))
-    #     driver.execute_script("arguments[0].scrollIntoView(true);", archive_link)
-    #     time.sleep(1)
-    #     archive_link.click()
-    #     time.sleep(4)
-    # except TimeoutException:
-    #     pymsgbox.alert('Timeout in line 146 - contact Justin')
-    #     time.sleep(1)
-    # # swith frame back to default
-    # driver.switch_to.default_content()
     driver.switch_to.frame(driver.find_element_by_id('fallback'))
     archive_field = driver.find_element_by_xpath('/html/body/div[2]/div[3]/main/div[3]/div/div/div/div/form/div[2]/div/input')
     time.sleep(1)
@@ -175,7 +150,8 @@ def upload_contacts():
 
     # The following two lines work but leave an open dialoge box
     file_input = driver.switch_to.active_element
-    file_input.send_keys('C:\Billing\Mailchimp\import_to_mailchimp.csv')
+    full_file_name = wd + "\\" + mc_import_file
+    file_input.send_keys(full_file_name)
     time.sleep(4)
     pymsgbox.alert('Click Cancel  then click OK') # get rid of windows box
     driver.find_element_by_xpath('/html/body/div[3]/div/main/div/div/div/div/main/div/form/div/button').click()
@@ -195,10 +171,6 @@ def upload_contacts():
     complete_import = driver.find_element_by_xpath('/html/body/div[3]/div/main/div/div/div/div/main/div/form/div/div/div/button')
     complete_import.click()
     return
-
-
-
-
 
 
 profile = webdriver.FirefoxProfile()  # should I get rid of webdriver?
