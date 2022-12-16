@@ -173,7 +173,11 @@ def upload_contacts():
     return
 
 firefox_options = Options()
-firefox_options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
+firefox_options.binary_location = "C:/Users/BeccaThomas/AppData/Local/Mozilla Firefox/firefox.exe"
+firefox_options.add_argument("--disable-infobars")
+firefox_options.add_argument("--disable-extensions")
+firefox_options.add_argument("--disable-popup-blocking")
+
 
 profile = webdriver.FirefoxProfile()  # should I get rid of webdriver?
 profile.set_preference('browser.download.folderList', 2)
