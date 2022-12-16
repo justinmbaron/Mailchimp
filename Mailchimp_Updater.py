@@ -1,5 +1,5 @@
 # Export current patients from WriteUpp and Import into Mailchimp replacing current audience
-# V1.1win 15/12/22
+# V1.1win  Bec 15/12/22 contains path for Bec's computer
 
 import csv
 import os
