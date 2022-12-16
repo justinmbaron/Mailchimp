@@ -172,6 +172,8 @@ def upload_contacts():
     complete_import.click()
     return
 
+firefox_options = Options()
+firefox_options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
 
 profile = webdriver.FirefoxProfile()  # should I get rid of webdriver?
 profile.set_preference('browser.download.folderList', 2)
