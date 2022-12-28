@@ -1,5 +1,5 @@
 # Export current patients from WriteUpp and Import into Mailchimp replacing current audience
-# V1.1win  Bec 15/12/22 contains path for Bec's computer
+# V1.1win  Bec 28/12/22 contains path for Bec's computer
 
 import csv
 import os
@@ -172,11 +172,11 @@ def upload_contacts():
     complete_import.click()
     return
 
-firefox_options = Options()
-firefox_options.binary_location = "C:/Users/BeccaThomas/AppData/Local/Mozilla Firefox/firefox.exe"
-firefox_options.add_argument("--disable-infobars")
-firefox_options.add_argument("--disable-extensions")
-firefox_options.add_argument("--disable-popup-blocking")
+firefox_options_bec = Options()
+firefox_options_bec.binary_location = r"C:/Users/BeccaThomas/AppData/Local/Mozilla Firefox/firefox.exe"
+firefox_options_bec.add_argument("--disable-infobars")
+firefox_options_bec.add_argument("--disable-extensions")
+firefox_options_bec.add_argument("--disable-popup-blocking")
 
 
 profile = webdriver.FirefoxProfile()  # should I get rid of webdriver?
@@ -187,7 +187,7 @@ profile.set_preference('browser.helperApps.neverAsk.saveToDisk', 'text/csv')
 profile.set_preference('browser.download.alwaysOpenPanel', False)
 profile.set_preference('layout.css.devPixelsPerPx', '0.8')
 
-driver = webdriver.Firefox(executable_path=driverpath, firefox_profile=profile)
+driver = webdriver.Firefox(executable_path=driverpath, firefox_profile=profile, firefox_options= firefox_options_bec)
 driver.set_window_size(1055,1300)
 driver.implicitly_wait(3)
 
