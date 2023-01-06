@@ -173,7 +173,7 @@ def upload_contacts():
     return
 
 firefox_options_bec = Options()
-firefox_options_bec.binary_location = r"C:/Users/BeccaThomas/AppData/Local/Mozilla Firefox/firefox.exe"
+firefox_options_bec.binary_location = r"C:\Users\BeccaThomas\AppData\Local\Mozilla Firefox\firefox.exe"
 firefox_options_bec.add_argument("--disable-infobars")
 firefox_options_bec.add_argument("--disable-extensions")
 firefox_options_bec.add_argument("--disable-popup-blocking")
