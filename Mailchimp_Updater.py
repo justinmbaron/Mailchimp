@@ -1,5 +1,7 @@
 # Export current patients from WriteUpp and Import into Mailchimp replacing current audience
 # V1.1win 15/12/22
+# v1.2win 14/2/23
+# Add firefox location in options
 
 import csv
 import os
@@ -19,7 +21,7 @@ from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import TimeoutException
 
 
-version_no = "v1.1win 15/12/2022"
+version_no = "v1.2win 14/2/23"
 wd = 'C:\\Billing\\Mailchimp'
 downloadDirectory = wd
 config_file = 'mailchimp.ini'
@@ -183,7 +185,7 @@ profile.set_preference('browser.helperApps.neverAsk.saveToDisk', 'text/csv')
 profile.set_preference('browser.download.alwaysOpenPanel', False)
 profile.set_preference('layout.css.devPixelsPerPx', '0.8')
 
-driver = webdriver.Firefox(executable_path=driverpath, firefox_profile=profile)
+driver = webdriver.Firefox(executable_path = driverpath, firefox_profile=profile, options=firefox_options)
 driver.set_window_size(1055,1300)
 driver.implicitly_wait(3)
 
